@@ -1,1 +1,23 @@
-<h1>under construction.</h1>
+<style type="text/css">
+html {
+      background: url('https://i.ibb.co/p4DVNqq/star.jpg') no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+h1{color: white;letter-spacing:1.3px;}
+p{color: white;}
+a:link, a:hover{color:white;}
+</style>
+
+<h1 style="font-color: #00000">luminate.</h1>
+<p>because millenials are really into astrology.</p>
+
+<% if logged_in? %>
+    <%= link_to "<button>Welcome back, #{@user}.</button>".html_safe, welcome_path %>
+  <%= link_to "Logout", sessions_path, method: :delete %>
+  <% else %>
+  <%= link_to "<button>Login</button>".html_safe, login_path %> | <%= link_to "<button>Create An Account</button>".html_safe, signup_path, class: "btn btn-primary" %>
+  <% end %> 

@@ -1,0 +1,14 @@
+<%= link_to "Return To Welcome Page", "/welcome" %>
+<h1>Your Connections:</h1>
+
+<hr>
+You have <%= @connections.count %> connection(s) in total.<br><br>
+
+<% @connections.each do |c| %>
+<%= image_tag c.image, size: "150x150", :style => "float: right" %>
+<p><b>Name: </b><%= c.first_name.to_s + " " + c.last_name.to_s %><br>
+<b>Birthday: </b> <%= c.dob.strftime("%B %d, %Y") + " (" + c.sun_sign.name + ")" %><br>
+<%= link_to "View Full Profile", user_path(c) %> | <%= link_to "Delete Connection", user_path(c) %>
+
+<hr>
+<% end %>

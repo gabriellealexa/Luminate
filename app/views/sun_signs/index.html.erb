@@ -1,0 +1,11 @@
+<%= link_to "Return To Welcome Page", "/welcome" %><br>
+<h1>About Sun Signs:</h1>
+<hr>
+
+<p>Sun sign astrology is the form of astrology most commonly found in many newspaper and magazine columns. It is a simplified system of astrology which considers only the position of the Sun at birth, which is said to be placed within one of the twelve zodiac signs.</p>
+
+<% @sun_signs.each do |sign| %>
+<h2><%= sign.name %></h2>
+<b>Element:</b> <%= sign.element %><br>
+<b>Info:</b> <%= sign.info %>
+<% end %>

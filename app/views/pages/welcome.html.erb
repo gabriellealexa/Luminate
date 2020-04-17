@@ -1,0 +1,17 @@
+<h1>Welcome back, <%= @user.first_name %>!</h1><hr>
+
+
+
+Your birthday is <%= @user.dob.strftime("%B %d, %Y") %>, which means your sun is in <%= @user.sun_sign.name + "." %>
+There are <%= @user.sun_sign.users.count %> other users with a <%= @user.sun_sign.name  %> sun, but none quite like you. Thank you for being here.
+<br><br>
+<center><b>Navigate:</B> <%= link_to "View My Profile", user_path(@user) %> 
+• <%= link_to "Edit My Profile", edit_user_path(@user) %> • <%= link_to "View My Connections", connections_path %> • <%= link_to "About Sun Sign Astrology", sun_signs_path %> • <%= link_to "Logout", sessions_path, method: :delete, confirm: 'Are you sure?' %></center>
+
+<center><h2><%= link_to "Browse Users With My Sun Sign", sun_sign_path(@user.sun_sign) %></h2></center><hr>
+<h2>All Signs:</h2>
+<center>• <% SunSign.all.each do |sign| %>
+<%= link_to sign.name, sun_sign_path(sign) %> •
+<% end %></center><br><br>
+
+<b>About you, <%= @user.sun_sign.name %>:</b> <%= @user.sun_sign.info %>

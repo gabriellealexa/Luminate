@@ -1,0 +1,49 @@
+<h1>sign up for luminate.</h1>
+<hr><br>
+<div align="center">
+<img align="left" src="https://i.ibb.co/5sdccx9/anagodf-nappy.jpg" width="350px">
+<%= form_for @user do |f| %>
+
+<% if flash[:errors] %>
+     <ul><b> ERROR: please try again!</b>
+        <% flash[:errors].each do |error| %>
+          <small><li class="error">• <%= error %>.</li></small>
+        <% end %>
+      </ul>
+    <% end %>
+
+<b>LOGIN INFO</b><br>
+<%= f.label :email, 'Email Address' %>:
+<%= f.text_field :email %><br>
+<%= f.label :password %>:
+<%= f.password_field :password %><br>
+<%= f.label :password_confirmation %>:
+<%= f.password_field :password_confirmation %><br><br>
+
+<b>PERSONAL INFO</b><br>
+<%= f.label :first_name, 'First Name' %>:
+<%= f.text_field :first_name %><br>
+<%= f.label :last_name, 'Last Name' %>:
+<%= f.text_field :last_name %><br>
+<%= f.label :dob, 'Date of Birth' %>:
+<%= f.date_select :dob, start_year: 1960, end_year: 2002, order: [:month, :day, :year], prompt: {day: 'Date:', month: 'Month:', year: 'Year:'} %><br>
+<br>
+<%= f.label :sun_sign_id, 'Sun Sign:' %>
+<%= f.collection_select :sun_sign_id, SunSign.all, :id, :name, {:prompt => "Select One:"} %> <br>
+
+<%= f.label :gender, 'Gender' %>:
+<%= f.select :gender, [['Female', 'female'], ['Male', 'male'], ['Non-Binary', 'non-binary'], ['Other', 'Other']], { :prompt => "Select One:" } %><br>
+<%= f.label :pronouns, 'Pronouns' %>:
+<%= f.select :pronouns, [['She/Her', 'she/her'], ['He/Him', 'he/him'], ['They/Them', 'they/them'], ['Ze/Zir', 'ze/zir'], ['Xie/Hir', 'xie/hir']], {:prompt => "Select One:"} %><br>
+<%= f.label :orientation, 'Orientation' %>:
+<%= f.select :orientation, [['Straight', 'straight'], ['Gay', 'gay'], ['Lesbian', 'lesbian'], ['Bisexual', 'bisexual'], ['Asexual', 'asexual'], ['Demisexual', 'demisexual'], ['Pansexual', 'pansexual'], ['Queer', 'queer'], ['Questioning', 'questioning']], {:prompt => "Select One:"} %><br>
+
+<%= f.label :image, "Upload Profile Picture:" %><br>
+<%= f.file_field :image %><br>
+<%= f.label :bio, 'Bio' %>:<br>
+<%= f.text_area :bio, cols: 20, rows: 8 %><br>
+
+<%= f.submit %>
+<% end%>
+</div>
+<%# <%= button_to "Or Login", login_path, method: "get" %>

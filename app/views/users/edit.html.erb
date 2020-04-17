@@ -1,0 +1,40 @@
+<div class="edit_user">
+<%= link_to "Return To Welcome Page", "/welcome" %>
+<h1>Edit Your User Information:</h1>
+<hr>
+<%= form_for @user do |f| %>
+
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name %>
+<br>
+      <%= f.label :last_name %>
+    <%= f.text_field :last_name %><br><br>
+
+<%= f.label :dob, 'Date of Birth' %>:
+<%= f.date_select :dob, start_year: 1960, end_year: 2002, order: [:month, :day, :year], prompt: {day: 'Date:', month: 'Month:', year: 'Year:'} %><br>
+
+<%= f.label :sun_sign_id, 'Sun Sign:' %>
+<%= f.collection_select :sun_sign_id, SunSign.all, :id, :name, {:prompt => "Select One:"} %> <br>
+
+<%= f.label :gender, 'Gender' %>:
+<%= f.select :gender, [['Female', 'female'], ['Male', 'male'], ['Non-Binary', 'non-binary'], ['Other', 'Other']], { :prompt => "Select One:" } %><br>
+<%= f.label :pronouns, 'Pronouns' %>:
+<%= f.select :pronouns, [['She/Her', 'she/her'], ['He/Him', 'he/him'], ['They/Them', 'they/them'], ['Ze/Zir', 'ze/zir'], ['Xie/Hir', 'xie/hir']], {:prompt => "Select One:"} %><br>
+<%= f.label :orientation, 'Orientation' %>:
+<%= f.select :orientation, [['Straight', 'straight'], ['Gay', 'gay'], ['Lesbian', 'lesbian'], ['Bisexual', 'bisexual'], ['Asexual', 'asexual'], ['Demisexual', 'demisexual'], ['Pansexual', 'pansexual'], ['Queer', 'queer'], ['Questioning', 'questioning']], {:prompt => "Select One:"} %><br>
+
+<%= f.label :bio, 'Bio' %>:<br>
+<%= f.text_area :bio, cols: 20, rows: 8 %><br>
+
+<% if flash[:errors] %>
+      <ul>
+        <% flash[:errors].each do |error| %>
+          <li class="error"><%= error %></li>
+        <% end %>
+      </ul>
+    <% end %>
+
+    <%= f.submit "Save" %>
+  <% end %>
+
+</div>

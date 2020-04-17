@@ -1,0 +1,32 @@
+<%= link_to "Return To Welcome Page", "/welcome" %>
+<% if @current_user == @user %>
+<h1><u>Your Profile:</u><small> <%= @user.first_name + " " + @user.last_name %></small></h1>
+<% elsif @current_user != @user %>
+<h1><u>User Profile:</u> <small><%= @user.first_name + " " + @user.last_name %></small></h1>
+<% end %>
+
+
+<p><%= image_tag url_for(@user.image), size: "150x150", :style => "float: right" %></p>
+<p align="center">
+
+<% if @current_user == @user %>
+<%= button_to "Edit Profile", edit_user_path, method: "get" %>
+<% elsif @current_user != @user %>
+    <% if  @current_user.matches.include?(@user) %>
+    You and <%= @user.first_name %> are connected. Disconnect?
+    <% else  %>
+        You and <%= @user.first_name %> are not yet connected. 
+        <center><%= button_to "Connect with #{@user.first_name}", connection_path(@user[:id])  %></center>
+    <% end %>
+<% end %>
+
+<p><b>Name:</b> <%= @user.first_name + " " + @user.last_name %></p>
+<p><b>Date of Birth:</b> <%= @user.dob.to_formatted_s(:long) %></p>
+<p><b>Sign:</b> <%= link_to @user.sun_sign.name, sun_sign_path(@user.sun_sign) %> </p>
+<p><b>Gender/Pronouns:</b> <%= @user.gender + " | " + @user.pronouns %></p>
+<p><b>Orientation:</b> <%= @user.orientation.capitalize  %></p>
+<p><b>Bio:</b> <%= @user.bio %></p>
+
+
+
+

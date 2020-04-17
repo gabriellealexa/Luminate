@@ -1,0 +1,20 @@
+
+<%= link_to "Return To Welcome Page", "/welcome" %>
+<h1><%= @sun_sign.name %> </h1><b>Element:</b> <%= @sun_sign.element %><br><br><hr>
+
+
+<b>Info:</b> <%= @sun_sign.info %><br><br>
+
+<center><h1>Users With This Sun Sign:</h1></center>
+<% @sun_sign.users.each do |user| %>
+<div class="entry">
+<h2>Name: <%= user.first_name + " " + user.last_name %></h2>
+<div align="right"><%= link_to "<button>View Full Profile</button>".html_safe, user_path(user), :style => "width:400px;" %> • <%= link_to "<button>Connect</button>".html_safe, new_connection_path, :style => "width:400px;" %></div>
+<%= image_tag user.image, size: "100x100", :style => "float: right; margin: 10px; padding: 5px; border: 3px solid black; align: left" %>
+    <p>Date of Birth: <%= user.dob %></p>
+        <p>Gender/Pronouns: <%= user.gender + " | " + user.pronouns %></p>
+    <p>Orientation: <%= user.orientation.capitalize  %><br><br>
+    <div align="center">
+    <hr>
+    </div>
+    <% end %>

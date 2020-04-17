@@ -58,3 +58,12 @@ gem 'bootstrap-sass', '~> 3.3.6'
 
 #jquery, bc sass is dependent on it
 gem 'jquery-rails'
+
+
+gem "kt-paperclip", "~> 6.2.0"
+
+
+gem 'image_processing', '~> 1.2'
+
+gem 'zodiac'
+# gem 'horoscopes'
