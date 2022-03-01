@@ -63,7 +63,7 @@ gem 'jquery-rails'
 gem "kt-paperclip", "~> 6.2.0"
 
 
-gem 'image_processing', '~> 1.2'
+gem 'image_processing', '~> 1.12'
 
 gem 'zodiac'
 # gem 'horoscopes'
